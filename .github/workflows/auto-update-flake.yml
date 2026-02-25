@@ -52,5 +52,7 @@ jobs:
                   echo "Flake was outdated and has been updated and pushed." >> $GITHUB_STEP_SUMMARY
                 else
                   echo "Flake is up to date. No changes were made." >> $GITHUB_STEP_SUMMARY
+                fi
             
+                
 
