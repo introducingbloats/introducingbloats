@@ -47,6 +47,10 @@ jobs:
 
             - name: Write summary
               if: success()
-              run: echo "Flake was outdated and has been updated and pushed." >> $GITHUB_STEP_SUMMARY
+              run: |
+                if [ "${{ steps.check_changes.outputs.changes }}" == "true" ]; then
+                  echo "Flake was outdated and has been updated and pushed." >> $GITHUB_STEP_SUMMARY
+                else
+                  echo "Flake is up to date. No changes were made." >> $GITHUB_STEP_SUMMARY
             
 
