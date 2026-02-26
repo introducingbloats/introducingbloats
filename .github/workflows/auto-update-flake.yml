@@ -12,11 +12,14 @@ jobs:
             - name: Check out repository
               uses: actions/checkout@v4
               with:
-                presist-credentials: true
+                persist-credentials: true
                 fetch-depth: 2
 
             - name: Setup Nix
               uses: DeterminateSystems/determinate-nix-action@v3
+            
+            - name: Prebuild .#updateScript
+              run: nix build --no-link .#updateScript
             
             - name: Run .#updateScript
               run: nix run .#updateScript
